@@ -270,23 +270,3 @@ Deploy Q4 acquisition campaigns (October–December) to capitalise on stronger d
 ## Methodology
 
 This analysis covers January 2024 through December 2025 (2026 Q1 excluded as incomplete). 
-
----
-
-## Repository Structure
-
-```
-├── README.md                    ← This report
-├── images/
-│   ├── 1.png
-│   ├── 2.png
-│   ├── 3.png
-│   └── 4.png
-├── data/
-│   ├── credit_applications.csv
-│   ├── transactions_fintech.csv
-│   ├── user_activity_retention.csv
-│   └── users_cohort.csv
-└── sql/
-    └── Exploratory_Analysis.sql
-```
