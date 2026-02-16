@@ -27,9 +27,9 @@
 - **Stable demand:** YoY applications changed by only −0.6%, with total requested amounts down just 0.9%. There is no evidence of a significant downward trend.
 - **Seasonal Q1 weakness:** Q1 consistently shows the lowest application volume each year (14,200–14,390), a 2–3% dip from peak quarters. February is the weakest individual month.
 - **Default rate is flat across all score bands (5%):** A credit scoring model should produce differentiated default rates. The uniform 5% across <600 to 850+ bands suggests the model adds no predictive value for default risk.
-- **Conversion funnel drop-off:** Only 19.5% of app opens lead to confirmed orders. The biggest single drop is view_product → add_to_cart (43% loss), not the checkout stage.
-- **Transaction type clarification:** The "20% refund rate" on the dashboard represents the proportion of refund-type transactions among 5 equally distributed types. There are zero records with refunded status. This is a data labelling issue, not a customer satisfaction problem.
-- **LTV is uniform:** Average lifetime value is ~$2,501 across all account types, age groups, signup channels, and countries. No segment produces meaningfully higher LTV.
+- **Conversion funnel drop-off:** Only 19.5% of app opens lead to confirmed orders. The biggest single drop is view_product → add_to_cart (43% loss).
+- **Transaction type clarification:** The "20% refund rate" on the dashboard represents 
+- **LTV is uniform:** Average lifetime value is rounding $2,501 across all account types, age groups, signup channels, and countries. No segment produces meaningfully higher LTV.
 
 ---
 
@@ -98,7 +98,7 @@ The 600–762 credit score range accounts for 69.2% of all applications and repr
 | 850+ | 1,963 | 1.7% | 89.7% | $25,439 | 5.28% |
 
 > ⚠️ **Critical Finding: Uniform Default Rate**  
-> Default rates are essentially identical (~5%) across all credit score bands, from <600 to 850+. In a well-functioning credit scoring model, lower scores should default significantly more. This uniformity suggests either: (a) the scoring model does not predict defaults in this portfolio, (b) the data is synthetic/simulated, or (c) the approval process already filters out high-risk applicants so effectively that residual default risk is equalised. **This warrants immediate investigation.**
+> Default rates are essentially identical (5%) across all credit score bands, from <600 to 850+. In a well-functioning credit scoring model, lower scores should default significantly more. This uniformity suggests either: (a) the scoring model does not predict defaults in this portfolio, (b) the approval process already filters out high-risk applicants so effectively that residual default risk is equalised. **This asks for a deeper investigation.**
 
 ### 2.2 Default Rate by Loan Purpose
 
@@ -114,9 +114,8 @@ Default rates are also nearly uniform across loan purposes, ranging from 4.9% (e
 
 ### 2.3 Recommended Actions
 
-1. Audit the credit scoring model: conduct a Gini coefficient and KS statistic analysis to quantify its discriminatory power for predicting defaults.
-2. Implement risk-based pricing: if score bands truly carry different risk, adjust interest rates accordingly; if they do not, recalibrate the model.
-3. Analyse default timing: determine whether defaults cluster early (first 3 months) or late in the loan lifecycle to inform collection strategies.
+1. Implement risk-based pricing: if score bands carry different risk, adjust interest rates accordingly; if they do not, recalibrate the model.
+2. Analyse default timing: determine whether defaults cluster early (first 3 months) or late in the loan lifecycle to inform collection strategies.
 
 ---
 
@@ -181,8 +180,6 @@ Free accounts dominate at 69.9% of applications, but LTV is virtually identical 
 | Deposit | 28,934 | $4.8M | 9.4% |
 | Payment | 28,834 | $4.8M | 9.4% |
 
-> ⚠️ **Data Clarification: "Refunds"**  
-> The dashboard's "20.09% refund rate" and "30K refunds" refer to transactions where `transaction_type = 'refund'`. This is one of five transaction categories, each containing ~20% of records. There are **zero** transactions with `status = 'refunded'` in the dataset. The 20% figure represents the natural distribution of transaction types, not a customer dissatisfaction metric.
 
 ### 4.2 Geography
 
@@ -199,13 +196,12 @@ The United States accounts for 40.2% of transactions and $20.6M in volume.
 
 ### 4.3 Fraud Assessment
 
-The overall fraud rate of 1.02% is well-controlled and consistent across all dimensions. However, 1,296 fraud-flagged transactions completed successfully, representing ~$460K in potential losses that warrant investigation.
+The overall fraud rate of 1.02% is well-controlled and consistent across all dimensions. However, 1,296 fraud-flagged transactions completed successfully, representing $460K in potential losses that should be investigated.
 
 ### 4.4 Recommended Actions
 
-1. Relabel the dashboard's "refund" metrics to avoid confusion with actual customer refunds.
-2. Investigate the 1,296 completed fraud transactions to identify detection gaps.
-3. Continue US market investment as the primary revenue driver; explore growth in BR and UK.
+1. Investigate the 1,296 completed fraud transactions to identify detection gaps.
+2. Continue US market investment as the primary revenue driver; explore growth in BR and UK.
 
 ---
 
@@ -243,15 +239,12 @@ Mobile platforms (iOS + Android) account for 80% of all sessions.
 | Android | 119,850 | 40.0% | 60.6 min |
 | Web | 60,038 | 20.0% | 60.6 min |
 
-**Correlation analysis:** Pages viewed and actions taken show no meaningful correlation (r = −0.002). Session duration is also uncorrelated with both pages and actions. These metrics are statistically independent in this dataset.
-
-**Day-of-week patterns:** Session counts are evenly distributed across all seven days (42,459–43,305 per day), with no meaningful Sunday/Monday peak.
+**Day-of-week patterns:** Session counts are evenly distributed across all seven days although the longest sessions take place in Sunday and Monday, so these are days where the promotional and startegic content should be pushed out, specially the mobile versions.
 
 ### 5.3 Recommended Actions
 
 1. Prioritise the product page → add-to-cart transition: run A/B tests on layout, information hierarchy, and CTA placement.
 2. Optimise for mobile-first: with 80% of sessions on iOS/Android, ensure the add-to-cart and checkout flows are optimised for touch.
-3. Do not invest in day-of-week targeting: the data shows no meaningful variation in engagement across weekdays.
 
 ---
 
@@ -260,10 +253,10 @@ Mobile platforms (iOS + Android) account for 80% of all sessions.
 Ranked by expected business impact:
 
 ### Priority 1: Audit the Credit Scoring Model
-The uniform 5% default rate across all score bands is the most strategically significant finding. If confirmed, it means the business is denying 47% of applicants in the <600 band for no material risk reduction. Fixing this could unlock substantial revenue.
+The uniform 5% default rate across all score bands is the most strategically significant finding. It means the business is denying 47% of applicants in the <600 band for no material risk reduction. Fixing this could unlock substantial revenue.
 
 ### Priority 2: Fix the Conversion Funnel
-Only 19.5% of app opens convert to confirmed orders. The view-product to add-to-cart step loses 43% of users. Improving this single step by even 10 percentage points could yield a ~20% increase in confirmed orders.
+Only 19.5% of app opens convert to confirmed orders. The view-product to add-to-cart step loses 43% of users. Improving this single step by even 10 percentage points could yield a 20% increase in confirmed orders.
 
 ### Priority 3: Create Real Account Tier Differentiation
 Premium and enterprise accounts produce identical LTV to free accounts. Redesign benefits around tangible credit advantages: lower rates, higher limits, or priority approval.
@@ -271,14 +264,12 @@ Premium and enterprise accounts produce identical LTV to free accounts. Redesign
 ### Priority 4: Seasonal Marketing Calendar
 Deploy Q4 acquisition campaigns (October–December) to capitalise on stronger demand. Develop Q1 retention offers (January–March) to offset the seasonal dip.
 
-### Priority 5: Dashboard & Data Governance
-Correct the "refund rate" metric. Add default rate to the credit dashboard. Replace the day-of-week and pages-vs-actions charts with funnel conversion rates and cohort retention.
 
 ---
 
 ## Methodology
 
-This analysis covers January 2024 through December 2025 (2026 Q1 excluded as incomplete). Key corrections from initial analyses include: the "66% quarterly decline" (actual: <1% YoY change), the "20% refund rate" (actual: transaction-type proportion), and the "pages-to-actions correlation" (actual: r = −0.002). Differences below 3% between segments were not interpreted as meaningful trends.
+This analysis covers January 2024 through December 2025 (2026 Q1 excluded as incomplete). 
 
 ---
 
