@@ -26,7 +26,7 @@
 
 - **Stable demand:** YoY applications changed by only −0.6%, with total requested amounts down just 0.9%. There is no evidence of a significant downward trend.
 - **Seasonal Q1 weakness:** Q1 consistently shows the lowest application volume each year (14,200–14,390), a 2–3% dip from peak quarters. February is the weakest individual month.
-- **Default rate is flat across all score bands (~5%):** A credit scoring model should produce differentiated default rates. The uniform 5% across <600 to 850+ bands suggests the model adds no predictive value for default risk.
+- **Default rate is flat across all score bands (5%):** A credit scoring model should produce differentiated default rates. The uniform 5% across <600 to 850+ bands suggests the model adds no predictive value for default risk.
 - **Conversion funnel drop-off:** Only 19.5% of app opens lead to confirmed orders. The biggest single drop is view_product → add_to_cart (43% loss), not the checkout stage.
 - **Transaction type clarification:** The "20% refund rate" on the dashboard represents the proportion of refund-type transactions among 5 equally distributed types. There are zero records with refunded status. This is a data labelling issue, not a customer satisfaction problem.
 - **LTV is uniform:** Average lifetime value is ~$2,501 across all account types, age groups, signup channels, and countries. No segment produces meaningfully higher LTV.
