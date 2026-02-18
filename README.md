@@ -248,7 +248,7 @@ Mobile platforms (iOS + Android) account for 80% of all sessions.
 
 ---
 
-## 6. Strategic Recommendations
+## 6. Recommendations
 
 Ranked by expected business impact:
 
